@@ -46,76 +46,12 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentTask = null;
     let fileName = 'file_name';
 
-    // Show tour modal on page load
-    // tourModal.style.display = 'block';
-
-    // Start the tour
-    // startTourBtn.onclick = function () {
-    //     tourModal.style.display = 'none';
-    //     introJs().setOptions({
-    //         steps: [
-    //             {
-    //                 intro: "Welcome to your personalized dashboard! Let's take a quick tour."
-    //             },
-    //             {
-    //                 element: document.querySelector('#fileNameDisplay'),
-    //                 intro: "You can rename your file by clicking here."
-    //             },
-    //             {
-    //                 element: document.querySelector('#addTaskBtn'),
-    //                 intro: "Click here to add a new task."
-    //             },
-    //             {
-    //                 element: document.querySelector('#filterTasksBtn'),
-    //                 intro: "Filter your task to download"
-    //             },
-    //             {
-    //                 element: document.querySelector('#undoBtn'),
-    //                 intro: "Undo from here"
-    //             },
-    //             {
-    //                 element: document.querySelector('#toDo'),
-    //                 intro: "This is the 'To Do' section where you can see tasks that need to be started."
-    //             },
-    //             {
-    //                 element: document.querySelector('#inProgress'),
-    //                 intro: "Move tasks here when you start working on them. (Drag & Drop to move the task)"
-    //             },
-    //             {
-    //                 element: document.querySelector('#complete'),
-    //                 intro: "Move tasks here when they are completed."
-    //             },
-    //             {
-    //                 element: document.querySelector('.task-card'),
-    //                 intro: "Click on a task to view details, edit or delete it."
-    //             },
-    //             {
-    //                 element: document.querySelector('#exportBtn'),
-    //                 intro: "You can export your tasks to an Excel file."
-    //             },
-    //             {
-    //                 element: document.querySelector('#shareBtn'),
-    //                 intro: "Share your tasks via email."
-    //             },
-    //             {
-    //                 intro: "That's the end of the tour! You are ready to start using the dashboard."
-    //             }
-    //         ]
-    //     }).start();
-    // };
-
-    // Skip the tour
-    // skipTourBtn.onclick = function () {
-    //     tourModal.style.display = 'none';
-    // };
-
-    // Show rename modal on filename click
+  
     fileNameDisplay.onclick = function () {
         renameModal.style.display = 'block';
         document.body.classList.add('modal-open');
     }
 
-    // Close rename modal
     closeRenameModal.onclick = function () {
         renameModal.style.display = 'none';
         document.body.classList.remove('modal-open');
@@ -130,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.remove('modal-open');
     }
 
-    // Export tasks
     exportBtn.onclick = function () {
         const tasks = getVisibleTasks();
         const formattedTasks = tasks.map((task, index) => ({
@@ -139,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
             Description: task.description,
             Status: task.column === 'complete' ? 'Completed' : 'Pending',
             Date: task.date,
-            Time: task.time // Include time in the exported data
+            Time: task.time 
         }));
 
         const workbook = XLSX.utils.book_new();
@@ -156,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Handle share button click
     shareBtn.onclick = function () {
         const subject = encodeURIComponent('My Task List');
         const body = encodeURIComponent('Please find my task list attached. You can download the attachment from the dashboard.');
@@ -165,25 +99,21 @@ document.addEventListener('DOMContentLoaded', function () {
         window.open(gmailLink, '_blank');
     };
 
-    // Search tasks
     searchTasks.oninput = function () {
         const query = searchTasks.value.toLowerCase();
         filterTasks(query);
     }
 
-    // Show filter modal on button click
     filterTasksBtn.onclick = function () {
         filterModal.style.display = 'flex';
         document.body.classList.add('modal-open');
     }
 
-    // Close filter modal
     closeFilterModal.onclick = function () {
         filterModal.style.display = 'none';
         document.body.classList.remove('modal-open');
     }
 
-    // Initialize datepickers
     $("#startDate").datepicker({
         dateFormat: "yy-mm-dd"
     });
@@ -191,15 +121,13 @@ document.addEventListener('DOMContentLoaded', function () {
         dateFormat: "yy-mm-dd"
     });
 
-    // Filter tasks by date range
     filterForm.onsubmit = function (event) {
         event.preventDefault();
         const startDate = $("#startDate").datepicker("getDate");
         const endDate = $("#endDate").datepicker("getDate");
         
-        // Normalize dates to start at midnight for comparison
         if (startDate) startDate.setHours(0, 0, 0, 0);
-        if (endDate) endDate.setHours(23, 59, 59, 999); // End of the day
+        if (endDate) endDate.setHours(23, 59, 59, 999); 
 
         filterTasksByDateRange(startDate, endDate);
         filterModal.style.display = 'none';
@@ -212,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const taskDate = new Date(task.date);
             const taskCard = document.getElementById(`task-${task.id}`);
             
-            // Reset the display style to none for all tasks
             taskCard.style.display = 'none';
 
             if (startDate && endDate) {
@@ -225,7 +152,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Clear filter
     clearFilterModalBtn.onclick = function () {
         $("#startDate").datepicker("setDate", null);
         $("#endDate").datepicker("setDate", null);
@@ -246,7 +172,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Load tasks from localStorage
     loadTasks();
     updateTaskCounts();
 
