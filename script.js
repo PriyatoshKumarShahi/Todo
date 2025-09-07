@@ -47,67 +47,67 @@ document.addEventListener('DOMContentLoaded', function () {
     let fileName = 'file_name';
 
     // Show tour modal on page load
-    tourModal.style.display = 'block';
+    // tourModal.style.display = 'block';
 
     // Start the tour
-    startTourBtn.onclick = function () {
-        tourModal.style.display = 'none';
-        introJs().setOptions({
-            steps: [
-                {
-                    intro: "Welcome to your personalized dashboard! Let's take a quick tour."
-                },
-                {
-                    element: document.querySelector('#fileNameDisplay'),
-                    intro: "You can rename your file by clicking here."
-                },
-                {
-                    element: document.querySelector('#addTaskBtn'),
-                    intro: "Click here to add a new task."
-                },
-                {
-                    element: document.querySelector('#filterTasksBtn'),
-                    intro: "Filter your task to download"
-                },
-                {
-                    element: document.querySelector('#undoBtn'),
-                    intro: "Undo from here"
-                },
-                {
-                    element: document.querySelector('#toDo'),
-                    intro: "This is the 'To Do' section where you can see tasks that need to be started."
-                },
-                {
-                    element: document.querySelector('#inProgress'),
-                    intro: "Move tasks here when you start working on them. (Drag & Drop to move the task)"
-                },
-                {
-                    element: document.querySelector('#complete'),
-                    intro: "Move tasks here when they are completed."
-                },
-                {
-                    element: document.querySelector('.task-card'),
-                    intro: "Click on a task to view details, edit or delete it."
-                },
-                {
-                    element: document.querySelector('#exportBtn'),
-                    intro: "You can export your tasks to an Excel file."
-                },
-                {
-                    element: document.querySelector('#shareBtn'),
-                    intro: "Share your tasks via email."
-                },
-                {
-                    intro: "That's the end of the tour! You are ready to start using the dashboard."
-                }
-            ]
-        }).start();
-    };
+    // startTourBtn.onclick = function () {
+    //     tourModal.style.display = 'none';
+    //     introJs().setOptions({
+    //         steps: [
+    //             {
+    //                 intro: "Welcome to your personalized dashboard! Let's take a quick tour."
+    //             },
+    //             {
+    //                 element: document.querySelector('#fileNameDisplay'),
+    //                 intro: "You can rename your file by clicking here."
+    //             },
+    //             {
+    //                 element: document.querySelector('#addTaskBtn'),
+    //                 intro: "Click here to add a new task."
+    //             },
+    //             {
+    //                 element: document.querySelector('#filterTasksBtn'),
+    //                 intro: "Filter your task to download"
+    //             },
+    //             {
+    //                 element: document.querySelector('#undoBtn'),
+    //                 intro: "Undo from here"
+    //             },
+    //             {
+    //                 element: document.querySelector('#toDo'),
+    //                 intro: "This is the 'To Do' section where you can see tasks that need to be started."
+    //             },
+    //             {
+    //                 element: document.querySelector('#inProgress'),
+    //                 intro: "Move tasks here when you start working on them. (Drag & Drop to move the task)"
+    //             },
+    //             {
+    //                 element: document.querySelector('#complete'),
+    //                 intro: "Move tasks here when they are completed."
+    //             },
+    //             {
+    //                 element: document.querySelector('.task-card'),
+    //                 intro: "Click on a task to view details, edit or delete it."
+    //             },
+    //             {
+    //                 element: document.querySelector('#exportBtn'),
+    //                 intro: "You can export your tasks to an Excel file."
+    //             },
+    //             {
+    //                 element: document.querySelector('#shareBtn'),
+    //                 intro: "Share your tasks via email."
+    //             },
+    //             {
+    //                 intro: "That's the end of the tour! You are ready to start using the dashboard."
+    //             }
+    //         ]
+    //     }).start();
+    // };
 
     // Skip the tour
-    skipTourBtn.onclick = function () {
-        tourModal.style.display = 'none';
-    };
+    // skipTourBtn.onclick = function () {
+    //     tourModal.style.display = 'none';
+    // };
 
     // Show rename modal on filename click
     fileNameDisplay.onclick = function () {
