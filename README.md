@@ -11,7 +11,7 @@ Getting started is super easy:
 
 ```bash
 # Clone the repository
-git clone https://github.com/PriyatoshKumarShahi/Todo
+git clone https://github.com/PriyatoshKumarShahi/Todo.git
 
 # Open the project
 cd todo-application
